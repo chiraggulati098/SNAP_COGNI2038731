@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>World Title Prevention</title>
+        <link rel="stylesheet" href="./style.css" />
+        <script type="text/javascript">
+            var canvas_variable;
+            var init_x = 200;
+            var init_y = 300;
+            var x_move = 1;
+            function initialize_canvas()    {
+                setInterval(draw_ball, 10);
+                canvas_variable = bouncing_ball_canvas.getContext('2d');
+            }
+            function draw_ball()    {
+                canvas_variable.clearRect(0,0, 1000, 500);
+                canvas_variable.beginPath();
+                canvas_variable.fillStyle="#FF0000";
+                canvas_variable.arc(init_x, init_y, 50, 0+init_x/50, Math.PI*2+init_x/50, true);
+                canvas_variable.stroke();
+                if( init_x<0 || init_x>1000) x_move = -x_move;
+                init_x += x_move;
+            }
+        </script>
+    </head>
+
+    <body>
+        <div class="page1">
+            <div class="page1_rectangle">
+                <div id="page1_line1"></div>
+                <div id="page1_line2"></div>
+                <div id="page1_line3"></div>
+            </div>
+            <h3 class="page1_date">18<sup>th</sup> September 2023 is</h3>
+            <h1 class="page1_title">World Suicide<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prevention</h1>
+            <h5 class="page1_bottom_title">- THE FIGURE -</h5>
+        </div>
+        <div>
+            <canvas id="bouncing_ball_canvas" width="1000" height="500">
+            </canvas>
+            <body onLoad="initialize_canvas();">
+        </div>
+    </body>
+</html>
